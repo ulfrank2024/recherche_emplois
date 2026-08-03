@@ -20,6 +20,17 @@ export function ProfilFormFields({ profil }: { profil?: Profil }) {
         />
       </label>
 
+      <label className={labelClasses}>
+        <span className={labelTextClasses}>CV de base (référence ou nom de fichier)</span>
+        <input
+          type="text"
+          name="cv_base"
+          defaultValue={profil?.cv_base ?? ""}
+          placeholder="ex: cv-informaticien-base.docx"
+          className={champClasses}
+        />
+      </label>
+
       <label className={`${labelClasses} sm:col-span-2`}>
         <span className={labelTextClasses}>Villes (séparées par des virgules)</span>
         <input
@@ -38,17 +49,6 @@ export function ProfilFormFields({ profil }: { profil?: Profil }) {
           name="mots_cles"
           defaultValue={profil?.filtres.mots_cles.join(", ")}
           placeholder="développeur junior, support N1"
-          className={champClasses}
-        />
-      </label>
-
-      <label className={labelClasses}>
-        <span className={labelTextClasses}>CV de base (référence ou nom de fichier)</span>
-        <input
-          type="text"
-          name="cv_base"
-          defaultValue={profil?.cv_base ?? ""}
-          placeholder="ex: cv-informaticien-base.docx"
           className={champClasses}
         />
       </label>
