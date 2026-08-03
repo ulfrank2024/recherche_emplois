@@ -20,7 +20,7 @@ export function ProfilFormFields({ profil }: { profil?: Profil }) {
         />
       </label>
 
-      <label className={labelClasses}>
+      <label className={`${labelClasses} sm:col-span-2`}>
         <span className={labelTextClasses}>Villes (séparées par des virgules)</span>
         <input
           type="text"
@@ -31,7 +31,7 @@ export function ProfilFormFields({ profil }: { profil?: Profil }) {
         />
       </label>
 
-      <label className={labelClasses}>
+      <label className={`${labelClasses} sm:col-span-2`}>
         <span className={labelTextClasses}>Mots-clés de poste (séparés par des virgules)</span>
         <input
           type="text"
@@ -54,7 +54,7 @@ export function ProfilFormFields({ profil }: { profil?: Profil }) {
       </label>
 
       {profil && (
-        <label className="flex items-center gap-2 text-sm">
+        <label className="flex items-center gap-2 text-sm sm:col-span-2">
           <input
             type="checkbox"
             name="actif"

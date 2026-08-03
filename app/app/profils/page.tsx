@@ -16,7 +16,7 @@ export default async function ProfilsPage({
   const profils = await getProfils();
 
   return (
-    <main className="mx-auto max-w-3xl p-8">
+    <main className="mx-auto max-w-4xl p-8">
       <h1 className="text-2xl font-semibold">Profils de recherche</h1>
       <p className="mt-1 text-sm text-zinc-500">
         Chaque profil a ses propres villes, mots-clés et CV de base — aucune
@@ -31,9 +31,9 @@ export default async function ProfilsPage({
 
       <section className="mt-8 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
         <h2 className="text-lg font-medium">Ajouter un profil</h2>
-        <form action={creerProfilAction} className="mt-4 grid gap-4">
+        <form action={creerProfilAction} className="mt-4 grid gap-4 sm:grid-cols-2">
           <ProfilFormFields />
-          <div>
+          <div className="sm:col-span-2">
             <button
               type="submit"
               className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
@@ -66,9 +66,9 @@ export default async function ProfilsPage({
                 </span>
               </div>
 
-              <form action={modifierAvecId} className="mt-4 grid gap-4">
+              <form action={modifierAvecId} className="mt-4 grid gap-4 sm:grid-cols-2">
                 <ProfilFormFields profil={profil} />
-                <div>
+                <div className="sm:col-span-2">
                   <button
                     type="submit"
                     className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
