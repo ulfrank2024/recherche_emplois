@@ -65,3 +65,30 @@ export async function getCandidatures(profilId: number): Promise<Candidature[]> 
   );
   return rows;
 }
+
+export type ProfilInput = {
+  nom: string;
+  cvBase: string | null;
+  filtres: { villes: string[]; mots_cles: string[] };
+};
+
+export async function createProfil(data: ProfilInput): Promise<void> {
+  await pool.query(
+    "INSERT INTO profils (nom, cv_base, filtres) VALUES ($1, $2, $3)",
+    [data.nom, data.cvBase, data.filtres]
+  );
+}
+
+export async function updateProfil(
+  id: number,
+  data: ProfilInput & { actif: boolean }
+): Promise<void> {
+  await pool.query(
+    "UPDATE profils SET nom = $1, cv_base = $2, filtres = $3, actif = $4 WHERE id = $5",
+    [data.nom, data.cvBase, data.filtres, data.actif, id]
+  );
+}
+
+export async function deleteProfil(id: number): Promise<void> {
+  await pool.query("DELETE FROM profils WHERE id = $1", [id]);
+}

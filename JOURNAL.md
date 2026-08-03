@@ -2,6 +2,13 @@
 
 Ce fichier sert de mémoire du projet dans le temps. À chaque session de travail significative, une nouvelle entrée est ajoutée en haut, avec : la date, ce qui a été fait ou décidé, pourquoi (si pas évident), et ce qui reste à faire ensuite.
 
+## 2026-08-02 (5)
+- Fait : gestion des profils (créer/modifier/supprimer) directement depuis le dashboard, page `/profils` — Ulrich gère lui-même ses profils dans l'app plutôt que par SQL manuel. Server Actions dans `lib/actions.ts`, formulaires HTML classiques (fonctionnent sans JS, sauf la confirmation de suppression).
+- Fait : redesign du dashboard (`/`) en tableau façon Kanban — une colonne par statut, couleur d'accent par statut, nav globale (Dashboard / Profils) ajoutée dans `app/layout.tsx`.
+- Fait : `sslmode=require` remplacé par `sslmode=verify-full` dans `.env`, `app/.env.local` et `.env.example` pour éviter l'avertissement de sécurité de `pg-connection-string`.
+- Testé : `npm run build` (compile + typecheck OK), cycle complet create/update/delete validé directement contre la vraie base Neon via un script autonome, pages `/` et `/profils` vérifiées en local (HTTP 200, contenu attendu présent).
+- Prochaine étape : actions d'écriture sur les candidatures (changer un statut depuis le dashboard), puis authentification simple avant de déployer sur Vercel.
+
 ## 2026-08-02 (4)
 - Fait : app Next.js 16 (App Router, TypeScript, Tailwind) scaffoldée dans `app/` via `create-next-app`, avec Turbopack.
 - Fait : `app/lib/db.ts` — connexion Postgres (`pg`) vers Neon, requêtes `getProfils` / `getCandidatures`.
