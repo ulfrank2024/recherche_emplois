@@ -2,6 +2,12 @@
 
 Ce fichier sert de mémoire du projet dans le temps. À chaque session de travail significative, une nouvelle entrée est ajoutée en haut, avec : la date, ce qui a été fait ou décidé, pourquoi (si pas évident), et ce qui reste à faire ensuite.
 
+## 2026-08-02 (3)
+- Fait : compte Neon connecté — `DATABASE_URL` renseignée dans `.env` (local, jamais commité).
+- Fait : `db/schema.sql` et `db/seed.sql` appliqués sur la vraie base Neon (`neondb`, Postgres 18.4). Tables `profils` et `candidatures` créées, 3 profils initiaux insérés (Informaticien, Cuisinier, Gardien de sécurité — tous actifs, sans CV ni filtres pour l'instant).
+- À noter : piège rencontré — l'URL Neon contient un `&` (ex: `channel_binding=require`), qui casse un `source .env` en bash si la valeur n'est pas entre guillemets. `.env.example` mis à jour pour le documenter.
+- Prochaine étape : créer le compte Vercel, puis définir les filtres de recherche par profil (villes, mots-clés) et commencer le dashboard en lecture seule.
+
 ## 2026-08-02 (2)
 - Fait : schéma Neon écrit dans `db/schema.sql` (type `statut_candidature`, tables `profils` et `candidatures`) + `db/seed.sql` (3 profils initiaux, sans CV ni filtres).
 - Fait : `.env.example` créé à la racine (DATABASE_URL, ANTHROPIC_API_KEY, DASHBOARD_PASSWORD).
