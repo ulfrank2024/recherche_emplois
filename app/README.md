@@ -1,10 +1,21 @@
 # app/ — Dashboard + fonctions serverless (Vercel)
 
-Ce dossier contiendra l'app Next.js unique, déployée sur Vercel, qui regroupe :
+App Next.js (App Router, TypeScript, Tailwind) qui contient le tableau de bord de suivi de candidatures et, plus tard, les fonctions serverless (dont le cron de veille quotidienne). Voir cahier-des-charges-suivi-emploi.md (racine du dépôt), sections 4.2 et 6.
 
-- le **tableau de bord** (pages consultées par Ulrich) — sélecteur de profil, liste des offres/candidatures groupées par statut, actions (changer un statut, ajouter une note).
-- les **routes API / fonctions serverless** — dont la fonction de veille quotidienne déclenchée par le Vercel Cron Job.
+## Développement local
 
-Lit et écrit directement dans la base Neon (voir cahier-des-charges-suivi-emploi.md, sections 4.2 et 6).
+```bash
+cp ../.env  # ou copier juste DATABASE_URL vers app/.env.local
+npm run dev
+```
 
-Pas encore scaffoldé (`create-next-app`) — à faire quand on attaque la construction du dashboard, après le schéma Neon (voir section 10 du cahier des charges).
+`app/.env.local` (non commité) doit contenir `DATABASE_URL` — la même chaîne de connexion Neon que le script local. Next.js la charge automatiquement au démarrage.
+
+## Structure
+
+- `app/page.tsx` — dashboard en lecture seule : sélecteur de profil + candidatures groupées par statut.
+- `lib/db.ts` — connexion Postgres (`pg`) vers Neon et requêtes (`getProfils`, `getCandidatures`).
+
+## À venir
+
+Actions d'écriture (changer un statut), authentification simple, fonction serverless de veille quotidienne — voir JOURNAL.md à la racine pour l'état d'avancement.

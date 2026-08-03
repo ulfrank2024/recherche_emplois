@@ -2,6 +2,14 @@
 
 Ce fichier sert de mémoire du projet dans le temps. À chaque session de travail significative, une nouvelle entrée est ajoutée en haut, avec : la date, ce qui a été fait ou décidé, pourquoi (si pas évident), et ce qui reste à faire ensuite.
 
+## 2026-08-02 (4)
+- Fait : app Next.js 16 (App Router, TypeScript, Tailwind) scaffoldée dans `app/` via `create-next-app`, avec Turbopack.
+- Fait : `app/lib/db.ts` — connexion Postgres (`pg`) vers Neon, requêtes `getProfils` / `getCandidatures`.
+- Fait : `app/app/page.tsx` — dashboard en lecture seule : sélecteur de profil (3 profils), candidatures groupées par statut (les 6 statuts du cahier des charges). Testé en local (`npm run dev`) contre la vraie base Neon — connexion OK, sélecteur de profil fonctionnel, chaque profil affiche bien "Aucune candidature" (aucune donnée insérée à part les 3 profils du seed).
+- À noter : Next.js 16 a des changements par rapport aux connaissances généralistes (voir `app/AGENTS.md` généré automatiquement, qui pointe vers `node_modules/next/dist/docs/`) — `searchParams` et `params` sont maintenant des `Promise` à `await` dans les Server Components.
+- À noter : `app/.env.local` (non commité) contient `DATABASE_URL`, copiée depuis `.env` à la racine — nécessaire pour que `npm run dev` se connecte à Neon en local.
+- Prochaine étape : actions d'écriture (changer un statut de candidature depuis le dashboard), puis authentification simple, avant de déployer sur Vercel.
+
 ## 2026-08-02 (3)
 - Fait : compte Neon connecté — `DATABASE_URL` renseignée dans `.env` (local, jamais commité).
 - Fait : `db/schema.sql` et `db/seed.sql` appliqués sur la vraie base Neon (`neondb`, Postgres 18.4). Tables `profils` et `candidatures` créées, 3 profils initiaux insérés (Informaticien, Cuisinier, Gardien de sécurité — tous actifs, sans CV ni filtres pour l'instant).
