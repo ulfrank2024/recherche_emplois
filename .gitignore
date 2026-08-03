@@ -1,0 +1,19 @@
+# Environnement / secrets
+.env
+.env.local
+.env*.local
+
+# Dependencies
+node_modules/
+
+# Next.js / Vercel
+.next/
+out/
+.vercel/
+
+# Fichiers generes (CV/lettres adaptes par candidature)
+scripts/generer-cv-lettre/output/
+
+# Systeme
+.DS_Store
+*.log
